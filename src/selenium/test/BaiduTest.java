@@ -32,32 +32,33 @@ public class BaiduTest {
     	//System.setProperty("webdriver.chrome.driver", "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chromedriver.exe"); 
         
         org.openqa.selenium.Proxy proxy = new org.openqa.selenium.Proxy(); 
-        proxy.setHttpProxy("127.0.0.1:8580")
-        	.setSslProxy("127.0.0.1:8580")
-        	.setFtpProxy("127.0.0.1:8580"); 
+        proxy.setHttpProxy("101.87.194.73:9000");
+        	//.setSslProxy("127.0.0.1:8580")
+        	//.setFtpProxy("127.0.0.1:8580"); 
       
         DesiredCapabilities cap = new DesiredCapabilities();
         cap.setCapability(CapabilityType.PROXY, proxy);
         
        // WebDriver driver = new ChromeDriver(cap);
         //WebDriver driver = new InternetExplorerDriver();
-        WebDriver driver = new FirefoxDriver();
+        WebDriver driver = new FirefoxDriver(cap);
         // 隐性的等待,设置10秒  
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().maximize();
         
       
-        setScroll(driver, 10000);
+        //setScroll(driver, 10000);
  
         /***************************************************************/
-        
+        /*
+        driver.get("http://tieba.baidu.com");
+        driver.findElement(By.id("wd1")).sendKeys("蚁人");
+        driver.findElement(By.linkText("进入贴吧")).click();
+        System.out.println(driver.getTitle());
+*/
         driver.get("http://www.baidu.com");
-        driver.findElement(By.id("kw")).sendKeys("Hello Webdriver!");
+        driver.findElement(By.id("kw")).sendKeys("我的ip");
         driver.findElement(By.id("su")).click();
-        System.out.println(driver.getTitle());
-
-        driver.findElement(By.linkText("图片")).click();
-        System.out.println(driver.getTitle());
         
         /****************************登陆126邮箱***********************************/
         
